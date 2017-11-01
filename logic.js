@@ -35,16 +35,21 @@ var todoFunctions = {
 
 
   deleteTodo: function(todos, idToDelete) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // return a new array, this should not contain any todo with an id of idToDelete
-    // hint: array.filter
+   var newTodos = todos.filter(function(todo){
+        return todo.id !== idToDelete;
+    });
+    return newTodos;
   },
+
   markTodo: function(todos, idToMark) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // in the new todo array, all elements will remain unchanged except the one with id: idToMark
-    // this element will have its done value toggled
-    // hint: array.map
+    var newTodos = this.cloneArrayOfObjects(todos);
+    var targetObj = newTodos.find(function(x) {
+      return x.id == idToMark;
+    });
+    targetObj.done = !targetObj.done;
+    return newTodos; 
   },
+
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
@@ -58,6 +63,6 @@ var todoFunctions = {
 // The answer has something to do with needing to run code both in the browser and in Node.js
 // See this article for more details:
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
-if (typeof module !== 'undefined') {
+//if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
-}
+//}
