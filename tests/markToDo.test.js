@@ -1,11 +1,11 @@
 const test = require('tape');
 const logic = require('../logic.js');
 
-const dummyArr = [
+const dummyMarkArr = [
   {
     id: 0,
     description: 'smash avocados',
-    done: true,
+    done: false,
   },
   {
     id: 1,
@@ -24,18 +24,38 @@ const dummyArr = [
   },
 ];
 
-test('Tape is working', function(t) {
-  t.equals(1,1,"one equals one");
+const dummyArrMark1 = [
+  {
+    id: 0,
+    description: 'smash avocados',
+    done: false,
+  },
+  {
+    id: 1,
+    description: 'make coffee',
+    done: true,
+  },
+  {
+    id: 2,
+    description: 'buy tea',
+    done: false,
+  },
+  {
+    id: 3,
+    description: 'buy coffee',
+    done: false,
+  },
+];
+
+test('Function returns an array of same length', function(t) {
+   t.equal(logic.markTodo(dummyMarkArr,2).length, dummyMarkArr.length, 'Function returns an array of the same length');
+   t.end();
+ });
+
+ test('Function returns dummyArr minus id #1', function(t) {
+
+  t.deepEquals(logic.markTodo(dummyMarkArr,1),dummyArrMark1,'Function marks id #1 as done.');
   t.end();
-})
+  });
 
-test('Function returns an array', function(t) {
-   t.equal(Array.isArray(logic.deleteTodo([],2)),true, 'Function returns an array');
-   t.end();
- });
-
- test('Function returns an array one shorter than input array', function(t) {
-   t.equals(dummyArr.length-logic.deleteTodo(dummyArr,1).length, 1, 'Function returns an array one shorter than input array');
-   t.end();
- });
-
+  
