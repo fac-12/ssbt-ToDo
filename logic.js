@@ -19,7 +19,7 @@ var todoFunctions = {
   //changes to the new array don't affect the original
   cloneArrayOfObjects: function(todos) {
     return todos.map(function(todo){
-      return JSON.parse(JSON.stringify(object));
+      return JSON.parse(JSON.stringify(todo));
     });
   },
   
@@ -30,10 +30,13 @@ var todoFunctions = {
     // hint: array.concat
   },
   deleteTodo: function(todos, idToDelete) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // return a new array, this should not contain any todo with an id of idToDelete
-    // hint: array.filter
+    var copyTodos = this.cloneArrayOfObjects(todos);
+    var newTodos = copyTodos.filter(function(todo){
+        return todo.id !== idToDelete;
+    });
+    return newTodos;
   },
+
   markTodo: function(todos, idToMark) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
@@ -53,6 +56,6 @@ var todoFunctions = {
 // The answer has something to do with needing to run code both in the browser and in Node.js
 // See this article for more details: 
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
-if (typeof module !== 'undefined') {
+//if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
-}
+//}
