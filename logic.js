@@ -30,8 +30,7 @@ var todoFunctions = {
     // hint: array.concat
   },
   deleteTodo: function(todos, idToDelete) {
-    var copyTodos = this.cloneArrayOfObjects(todos);
-    var newTodos = copyTodos.filter(function(todo){
+   var newTodos = todos.filter(function(todo){
         return todo.id !== idToDelete;
     });
     return newTodos;
@@ -42,6 +41,8 @@ var todoFunctions = {
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    var copyTodos = this.cloneArrayOfObjects(todos);
+    return copyTodos; 
   },
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
