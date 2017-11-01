@@ -24,6 +24,24 @@ const dummyArr = [
   },
 ];
 
+const dummyArrMinus1 = [
+  {
+    id: 0,
+    description: 'smash avocados',
+    done: true,
+  },
+  {
+    id: 2,
+    description: 'buy tea',
+    done: false,
+  },
+  {
+    id: 3,
+    description: 'buy coffee',
+    done: false,
+  },
+]
+
 test('Tape is working', function(t) {
   t.equals(1,1,"one equals one");
   t.end();
@@ -38,4 +56,9 @@ test('Function returns an array', function(t) {
    t.equals(dummyArr.length-logic.deleteTodo(dummyArr,1).length, 1, 'Function returns an array one shorter than input array');
    t.end();
  });
+
+ test('Function returns dummyArr minus id #1', function(t) {
+   t.deepEquals(logic.deleteTodo(dummyArr,1),dummyArrMinus1,'Function returns dummyArr minus id #1');
+  t.end();
+  });
 

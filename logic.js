@@ -35,19 +35,21 @@ var todoFunctions = {
 
 
   deleteTodo: function(todos, idToDelete) {
-    var copyTodos = this.cloneArrayOfObjects(todos);
-    var newTodos = copyTodos.filter(function(todo){
+   var newTodos = todos.filter(function(todo){
         return todo.id !== idToDelete;
     });
     return newTodos;
   },
 
   markTodo: function(todos, idToMark) {
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // in the new todo array, all elements will remain unchanged except the one with id: idToMark
-    // this element will have its done value toggled
-    // hint: array.map
+    var newTodos = this.cloneArrayOfObjects(todos);
+    var targetObj = newTodos.find(function(x) {
+      return x.id == idToMark;
+    });
+    targetObj.done = !targetObj.done;
+    return newTodos; 
   },
+
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
