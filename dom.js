@@ -50,11 +50,12 @@
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
       // what is inside event.target?
-
-      var description = '?'; // event.target ....
-
-      // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      var todoObj = {};
+      event.preventDefault();
+      todoObj.description = event.target.description.value;
+      event.target.description.value = "";
+      todoObj.done = false;
+      var newState = todoFunctions.addTodo(state, todoObj);
       update(newState);
     });
   }
