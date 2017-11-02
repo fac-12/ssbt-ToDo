@@ -6,33 +6,34 @@
     <link rel="stylesheet" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet">
   </head>
   <body>
     <header>
       <h1>TODAY</h1>
     </header>
     <main class = "main-flex-container">
+<form id="add-todo" class="add-todo">
+  <label for="description"></label>
+  <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield">
+  <label for="priority"></label>
+  <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" >
+  <input type="submit" id="submit" name="submit" value="" class="submiticon">
+</form>
 
-      <form id="add-todo" class="add-todo">
-        <label for="description"></label>
-        <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield">
-        <label for="priority"></label>
-        <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" >
-        <input type="submit" id="submit" name="submit" value="" class="submiticon">
-      </form>
-
-
+    <div id="sort-buttons">
+   <!--  <button id="reset">Reset</button> -->
+   <!-- <span class="sort-by-date">Sort By Date</span> -->
+     <button id="sortFirst" class="fa fa-arrow-circle-down sortbutton">   date descending</button>
+     <button id="sortLast" class="fa fa-arrow-circle-up sortbutton">   date ascending</button>
+     <!-- <span class="sort-by-date">Sort By Starred</span> -->
+     <button id="sortPriority" class="fa fa-star-half-o sortbutton">   starred</button>
+   </div>
     <div id = "todo-container" class="todo-container">
         <ul>
         </ul>
     </div>
-     <div id="sort-buttons">
-    <!--  <button id="reset">Reset</button> -->
-      <button id="sortFirst">Sort by Date Added</button>
-      <button id="sortLast">Sort by Most recent</button>
-      <button id="sortPriority">Sort by Priority</button>
-    </div>
+
     </main>
   </body>
   <script type="text/javascript" src = "./logic.js"></script>
