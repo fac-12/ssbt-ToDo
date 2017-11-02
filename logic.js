@@ -60,21 +60,10 @@ var todoFunctions = {
     return newTodos;
   },
 
-  sortTodos: function(todos, sortUp) {
+  sortTodos: function(todos, sortFunction) {
     var newTodos= this.cloneArrayOfObjects(todos);
-    newTodos.sort(function(a,b){
-      if(sortUp) {
-          return parseInt(b.id)-parseInt(a.id);
-      }
-      else {
-        return parseInt(a.id)-parseInt(b.id);
-      }
-    });
+    newTodos.sort(sortFunction);
     return newTodos;
-    // stretch goal! Do this last
-    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
-    // sortFunction will have same signature as the sort function in array.sort
-    // hint: array.slice, array.sort
   },
 };
 
