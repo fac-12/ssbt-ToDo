@@ -104,12 +104,6 @@
     });
   };
 
-  if (sortChronoBtn) {
-    sortChronoBtn.addEventListener('click', function(event) {
-      todoFunctions.sortTodos(state);
-    }
-  }
-
   if(sortUpButton){
     sortUpButton.addEventListener('click',function(event){
     var newState=  todoFunctions.sortTodos(state, true);
@@ -135,7 +129,7 @@
   // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement('ul');
-
+    console.log(state);
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
     });
