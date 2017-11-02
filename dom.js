@@ -29,9 +29,9 @@
     // add markTodo button
     var markTodoNode = document.createElement('button');
     if (todo.done) {
-      markTodoNode.className = "fa fa-check-square-o mark";
+      markTodoNode.className = "fa fa-check-square-o mark-on";
     } else {
-      markTodoNode.className = "fa fa-square-o mark";
+      markTodoNode.className = "fa fa-square-o mark-off";
     }
     markTodoNode.addEventListener('click', function(event) {
       var newState = todoFunctions.markTodo(state, todo.id);
@@ -96,6 +96,7 @@
   var update = function(newState) {
     state = newState;
     renderState(state);
+    console.log(state);
   };
 
   // you do not need to change this function
