@@ -6,6 +6,8 @@
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
   var localState = localStorage.getItem('state');
+  var sortUpButton= document.getElementById('sortFirst');
+  var sortDownButton= document.getElementById('sortLast');
 
   //Pulls in current state from local storage
   if (localState) {
@@ -18,9 +20,9 @@
       { id: -3, description: 'first todo' },
       { id: -2, description: 'second todo' },
       { id: -1, description: 'third todo' },
-    ]; // this is our initial todoList  
+    ]; // this is our initial todoList
   }
-  
+
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
@@ -61,7 +63,7 @@
       update(newState);
     });
     todoNode.appendChild(priorityButtonNode);
-    
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.className = "fa fa-times delete";
@@ -90,6 +92,21 @@
       var newState = todoFunctions.addTodo(state, todoObj);
       update(newState);
     });
+  }
+
+  if(sortUpButton){
+    sortUpButton.addEventListener('click',function(event){
+    var newState=  todoFunctions.sortTodos(state, true);
+    update(newState);
+    });
+  }
+
+  if(sortDownButton){
+      sortDownButton.addEventListener('click',function(event){
+      var newState=  todoFunctions.sortTodos(state, false);
+      update(newState);
+      });
+
   }
 
   // you should not need to change this function
