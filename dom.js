@@ -10,6 +10,9 @@
   //Pulls in current state from local storage
   if (localState) {
     var state = JSON.parse(localState);
+    todoFunctions.generateId.set(state.reduce(function(a, b) {
+      return a > parseInt(b.id) ? a : parseInt(b.id);
+    }, 0));
   } else {
     var state = [
       { id: -3, description: 'first todo' },
