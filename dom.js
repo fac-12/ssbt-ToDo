@@ -5,13 +5,19 @@
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
+  var localState = localStorage.getItem('state');
 
-  var state = [
-    { id: -3, description: 'first todo' },
-    { id: -2, description: 'second todo' },
-    { id: -1, description: 'third todo' },
-  ]; // this is our initial todoList
-
+  //Pulls in current state from local storage
+  if (localState) {
+    var state = JSON.parse(localState);
+  } else {
+    var state = [
+      { id: -3, description: 'first todo' },
+      { id: -2, description: 'second todo' },
+      { id: -1, description: 'third todo' },
+    ]; // this is our initial todoList  
+  }
+  
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
@@ -83,6 +89,9 @@
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
     });
+
+    //Stores the state in local memory
+    localStorage.setItem('state', JSON.stringify(state));
 
     // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);
