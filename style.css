@@ -229,16 +229,20 @@ h1 {
       display: flex;
       align-items: left;
       padding: 1rem;
-      box-shadow: 0px 0px 10px 2px #aaa;
+      box-shadow: 0px 0px 0px 0px #aaa;
     }
 
     .mark {
         font-size:1.1rem;
     }
-    .delete{
-
+    .sort-buttons {
+        width: 100%;
+        padding: 0;
     }
-    .priority{
-
+    .sort-buttons > span {
+        display: none;
+    }
+    .sort-buttons > button {
+        margin: auto;
     }
 }
