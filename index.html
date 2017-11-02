@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=en>
   <head>
     <meta charset="utf-8">
     <title>tdd todo</title>
@@ -10,24 +10,24 @@
   </head>
   <body>
     <header>
-      <h1>TODAY</h1>
+      <h1 aria label="my to do list">TODAY</h1>
     </header>
     <main class = "main-flex-container">
 <form id="add-todo" class="add-todo">
   <label for="description"></label>
-  <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield">
+  <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield" aria-label="add item to list">
   <label for="priority"></label>
-  <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" >
-  <input type="submit" id="submit" name="submit" value="" class="submiticon">
+  <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" aria-label="mark item off list">
+  <input type="submit" id="submit" name="submit" value="" class="submiticon" aria-label="submit new item to list">
 </form>
 
     <div class="sort-buttons">
    <!--  <button id="reset">Reset</button> -->
    <!-- <span class="sort-by-date">Sort By Date</span> -->
-     <button id="sortFirst" class="fa fa-arrow-circle-down sortbutton">   date descending</button>
-     <button id="sortLast" class="fa fa-arrow-circle-up sortbutton">   date ascending</button>
+     <button id="sortFirst" class="fa fa-arrow-circle-down sortbutton" aria-label="Sort by date descending">   date descending</button>
+     <button id="sortLast" class="fa fa-arrow-circle-up sortbutton" aria-label="Sort by date ascending">   date ascending</button>
      <!-- <span class="sort-by-date">Sort By Starred</span> -->
-     <button id="sortPriority" class="fa fa-star-half-o sortbutton">   starred</button>
+     <button id="sortPriority" class="fa fa-star-half-o sortbutton" aria-label="Sort by priority">   starred</button>
    </div>
     <div id = "todo-container" class="todo-container">
         <ul>
