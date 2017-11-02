@@ -49,6 +49,10 @@
     // add span holding description
     var s = document.createElement("span");
     s.className = "description ";
+    s.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    })
     if (todo.priority === true) {
       s.className += "priority ";
     }

@@ -85,6 +85,7 @@ h1 {
 .description {
     margin-right: auto;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .delete {
