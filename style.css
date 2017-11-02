@@ -144,14 +144,33 @@ h1 {
     padding-left: 10px;
 }
 
-.sortbutton {
-  font-size: 2rem;
-  /* font-family: 'Roboto Slab', sans-serif; */
-  padding:10px;
-  margin: 10px 10px 0px 0px;
-  /* background-color: white;
-  border: 1px solid black; */
-  
+.sort-buttons > span {
+    font-size: 1rem;
+    padding: .6rem .5rem 0 0;
+    margin: 0;
+}
+
+.sort-buttons > button {
+    padding:  10px 8px 10px 8px;
+    border: 0;
+    background-color: white;
+}
+
+.sort-buttons > button:hover {
+    border: 1 solid black;
+}
+
+.sort-buttons button span {
+    padding: 0px 0px 0px 8px;
+    border: 0px solid blue;
+    position: relative;
+    top: -2px;
+    font-size: 1rem;
+    /* font-family: 'Roboto Slab', sans-serif; */
+}
+
+.sort-buttons button i {
+    font-size: 1.2rem !important;
 }
 
 
