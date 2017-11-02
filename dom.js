@@ -98,4 +98,5 @@
   };
 
   if (container) renderState(state);
+  console.log(state);
 })();
