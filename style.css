@@ -138,13 +138,20 @@ h1 {
   width:90%;
 }
 
-.sortbutton{
-  font-size: 1rem;
-  font-family: 'Roboto Slab', sans-serif;
+.sort-buttons {
+    width: 70%;
+    max-width: 700px;
+    display: flex;
+    padding-left: 10px;
+}
+
+.sortbutton {
+  font-size: 2rem;
+  /* font-family: 'Roboto Slab', sans-serif; */
   padding:10px;
   margin: 5px 5px;
-  background-color: white;
-  border: 1px solid black;
+  /* background-color: white;
+  border: 1px solid black; */
   
 }
 
@@ -157,10 +164,10 @@ h1 {
 
 
 }*/
-    font-size: 1.7rem !important;
+    /* font-size: 1.7rem !important;
     margin-top: 6px;
     width: 2rem;
-}
+} */
 .mark-off:hover {
     color: green;
 }
