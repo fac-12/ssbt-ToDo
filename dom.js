@@ -3,15 +3,15 @@
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom node where we will keep our todo
+  //get dom node references
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-  var resetBtn = document.getElementById('reset');
-  var sortChronoBtn = document.getElementById('sortChrono');
-  var sortPriorityBtn = document.getElementById('sortPriority');
-  var localState = localStorage.getItem('state');
   var sortOldButton= document.getElementById('sortOld');
   var sortNewButton= document.getElementById('sortNew');
   var sortStarButton = document.getElementById('sortStar');
+  //get local storage references
+  var localState = localStorage.getItem('state');
+
 
   //Pulls in current state from local storage
   if (localState) {
@@ -104,54 +104,46 @@
     });
   };
 
-  // Reset local storage
-  if (resetBtn) {
-    resetBtn.addEventListener('click', function(event) {
-      localStorage.removeItem('state');
-    });
-  };
-
+  //Sort Button Listeners
   if(sortOldButton){
     sortOldButton.addEventListener('click',function(event){
-      toggleClass([this],[sortNewButton,sortStarButton],"highlight");
-      var sortFunction = function(a,b) {
-        return parseInt(a.id)-parseInt(b.id);
-      }
-      var newState=  todoFunctions.sortTodos(state, sortFunction);
-      update(newState);
+      activateSort(this,[sortNewButton,sortStarButton]);
     });
   }
 
   if(sortNewButton){
       sortNewButton.addEventListener('click',function(event){
-        toggleClass([this],[sortOldButton,sortStarButton],"highlight");
-        var sortFunction = function(a,b) {
-          return parseInt(b.id)-parseInt(a.id);
-        }
-        var newState=  todoFunctions.sortTodos(state, sortFunction);
-        update(newState);
+        activateSort(this,[sortOldButton,sortStarButton]);
       });
   }
 
   if(sortStarButton) {
     sortStarButton.addEventListener('click', function(event) {
-      toggleClass([this],[sortOldButton,sortNewButton],"highlight");
-      var sortFunction = function(a,b) {
-        return b.priority-a.priority;
-      }
-      var newState = todoFunctions.sortTodos(state, sortFunction);
-      update(newState);
+      activateSort(this,[sortOldButton,sortNewButton]);
     });
   }
 
-  //Function to toggle a class
-  var toggleClass = function(onArr, offArr, theClass) {
-    onArr.forEach(function(x) {
-      x.classList.add(theClass);
-    });
+  //Function to activate Sort
+  var activateSort = function(turnOn, offArr) {
+    turnOn.classList.add("highlight");
     offArr.forEach(function(x) {
-      x.classList.remove(theClass);
+      x.classList.remove("highlight");
     });
+    if (turnOn == sortOldButton) {
+      var sortFunction = function(a,b) {
+        return parseInt(a.id)-parseInt(b.id);
+      };
+    } else if (turnOn == sortNewButton) {
+      var sortFunction = function(a,b) {
+        return parseInt(b.id)-parseInt(a.id);
+      };
+    } else {
+      var sortFunction = function(a,b) {
+        return b.priority-a.priority;
+      };
+    };
+    var newState = todoFunctions.sortTodos(state, sortFunction);
+    update(newState);
   }
 
   // you should not need to change this function
