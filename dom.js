@@ -61,11 +61,8 @@
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      // what is inside event.target?
-      var todoObj = {};
       event.preventDefault();
+      var todoObj = {};
       todoObj.description = event.target.description.value;
       event.target.description.value = "";
       todoObj.done = false;
@@ -98,5 +95,5 @@
   };
 
   if (container) renderState(state);
-  console.log(state);
+
 })();

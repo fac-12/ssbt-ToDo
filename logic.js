@@ -5,16 +5,25 @@
 var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
-  generateId: function(todos) {
-    //find max id in current array
-    var idCounter = todos.reduce(function(a,b) {
-      return parseInt(a.id) > parseInt(b.id) ? a.id : b.id;
-    }, 0);
+  generateId: (function() {
+    //get local storage if exists
+    var curList = JSON.parse(localStorage.getItem('state'));
+    //create idCounter and set to zero
+    var idCounter = 0;
+    //reset idCounter to current max id if a list already exists
+    if (curList) {
+      idCounter = curList.reduce(function(a, b) {
+        return a > parseInt(b.id) ? a : parseInt(b.id);
+      }, 0);
+    };
+    console.log("max id is "+idCounter);
+    function incrementCounter() {
+      console.log("new id is "+(idCounter+1));
+      return (idCounter += 1);
+    }
 
-    return idCounter+1;
-  },
-
-  
+    return incrementCounter;
+  })(),
 
   //cloneArrayOfObjects will create a copy of the todos array
   //changes to the new array don't affect the original
@@ -26,7 +35,7 @@ var todoFunctions = {
 
   addTodo: function(todos, newTodo) {
     var copyTodos = this.cloneArrayOfObjects(todos);
-    newTodo.id=this.generateId(todos);
+    newTodo.id=this.generateId();
     return copyTodos.concat(newTodo);
   },
 
