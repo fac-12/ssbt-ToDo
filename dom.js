@@ -5,6 +5,9 @@
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
+  var resetBtn = document.getElementById('reset');
+  var sortChronoBtn = document.getElementById('sortChrono');
+  var sortPriorityBtn = document.getElementById('sortPriority');
   var localState = localStorage.getItem('state');
 
   //Pulls in current state from local storage
@@ -71,6 +74,19 @@
       var newState = todoFunctions.addTodo(state, todoObj);
       update(newState);
     });
+  };
+
+  // Reset local storage
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(event) {
+      localStorage.removeItem('state');
+    });
+  };
+
+  if (sortChronoBtn) {
+    sortChronoBtn.addEventListener('click', function(event) {
+      todoFunctions.sortTodos(state);
+    }
   }
 
   // you should not need to change this function
