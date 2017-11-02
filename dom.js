@@ -11,6 +11,7 @@
   var localState = localStorage.getItem('state');
   var sortUpButton= document.getElementById('sortFirst');
   var sortDownButton= document.getElementById('sortLast');
+  var prioritySortButton = document.getElementById('sortPriority');
 
   //Pulls in current state from local storage
   if (localState) {
@@ -122,20 +123,29 @@
         var newState=  todoFunctions.sortTodos(state, sortFunction);
         update(newState);
       });
-
   }
+
+  if(prioritySortButton) {
+    prioritySortButton.addEventListener('click', function(event) {
+      var sortFunction = function(a,b) {
+        return b.priority-a.priority;
+      }
+      var newState = todoFunctions.sortTodos(state, sortFunction);
+      update(newState);
+    });
+  }
+
+  
 
   // you should not need to change this function
   var update = function(newState) {
     state = newState;
     renderState(state);
-    console.log(state);
   };
 
   // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement('ul');
-    console.log(state);
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
     });
