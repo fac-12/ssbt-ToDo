@@ -18,9 +18,15 @@
       { id: -3, description: 'first todo' },
       { id: -2, description: 'second todo' },
       { id: -1, description: 'third todo' },
-    ]; // this is our initial todoList  
+    ]; // this is our initial todoList
   }
-  
+
+var priorityStar = document.getElementById("priority");
+  priorityStar.addEventListener('click', fillStar, false);
+  function fillStar(e){
+    e.target.className = "fa fa-star star-on checkbox";
+  }
+
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
@@ -61,7 +67,7 @@
       update(newState);
     });
     todoNode.appendChild(priorityButtonNode);
-    
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.className = "fa fa-times delete";
