@@ -9,22 +9,40 @@
   var sortChronoBtn = document.getElementById('sortChrono');
   var sortPriorityBtn = document.getElementById('sortPriority');
   var localState = localStorage.getItem('state');
+  var sortUpButton= document.getElementById('sortFirst');
+  var sortDownButton= document.getElementById('sortLast');
 
   //Pulls in current state from local storage
   if (localState) {
     var state = JSON.parse(localState);
+    todoFunctions.generateId.set(state.reduce(function(a, b) {
+      return a > parseInt(b.id) ? a : parseInt(b.id);
+    }, 0));
   } else {
     var state = [
       { id: -3, description: 'first todo' },
       { id: -2, description: 'second todo' },
       { id: -1, description: 'third todo' },
-    ]; // this is our initial todoList  
+    ]; // this is our initial todoList
   }
-  
+
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
     // you will need to use addEventListener
+
+    // add markTodo button
+    var markTodoNode = document.createElement('button');
+    if (todo.done) {
+      markTodoNode.className = "fa fa-check-square-o mark-on";
+    } else {
+      markTodoNode.className = "fa fa-square-o mark-off";
+    }
+    markTodoNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    });
+    todoNode.appendChild(markTodoNode);
 
     // add span holding description
     var s = document.createElement("span");
@@ -36,24 +54,27 @@
     s.appendChild(d);
     todoNode.appendChild(s);                                     // Append the text to <span>
 
+    // this adds a priority button
+    var priorityButtonNode = document.createElement('button');
+    if(todo.priority){
+      priorityButtonNode.className = "fa fa-star star-on";
+    } else {
+       priorityButtonNode.className = "fa fa-star-o star-off";
+    }
+    priorityButtonNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.starTodo(state, todo.id);
+      update(newState);
+    });
+    todoNode.appendChild(priorityButtonNode);
+
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
-    deleteButtonNode.classname = "delete ";
+    deleteButtonNode.className = "fa fa-times delete";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
-
-    // add markTodo button
-    var markTodoNode = document.createElement('button');
-    markTodoNode.classname = "mark ";
-    markTodoNode.addEventListener('click', function(event) {
-      var newState = todoFunctions.markTodo(state, todo.id);
-      update(newState);
-    });
-
-    todoNode.appendChild(markTodoNode);
 
 
     // add classes for css
@@ -89,10 +110,26 @@
     }
   }
 
+  if(sortUpButton){
+    sortUpButton.addEventListener('click',function(event){
+    var newState=  todoFunctions.sortTodos(state, true);
+    update(newState);
+    });
+  }
+
+  if(sortDownButton){
+      sortDownButton.addEventListener('click',function(event){
+      var newState=  todoFunctions.sortTodos(state, false);
+      update(newState);
+      });
+
+  }
+
   // you should not need to change this function
   var update = function(newState) {
     state = newState;
     renderState(state);
+    console.log(state);
   };
 
   // you do not need to change this function

@@ -6,23 +6,17 @@ var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
   generateId: (function() {
-    //get local storage if exists
-    var curList = JSON.parse(localStorage.getItem('state'));
-    //create idCounter and set to zero
     var idCounter = 0;
     //reset idCounter to current max id if a list already exists
-    if (curList) {
-      idCounter = curList.reduce(function(a, b) {
-        return a > parseInt(b.id) ? a : parseInt(b.id);
-      }, 0);
+    return {
+      set: function(val) {
+        idCounter = val;
+      },
+      incrementCounter: function() {
+        idCounter += 1;
+        return idCounter;
+      }
     };
-    console.log("max id is "+idCounter);
-    function incrementCounter() {
-      console.log("new id is "+(idCounter+1));
-      return (idCounter += 1);
-    }
-
-    return incrementCounter;
   })(),
 
   //cloneArrayOfObjects will create a copy of the todos array
@@ -35,7 +29,8 @@ var todoFunctions = {
 
   addTodo: function(todos, newTodo) {
     var copyTodos = this.cloneArrayOfObjects(todos);
-    newTodo.id=this.generateId();
+    newTodo.id=this.generateId.incrementCounter();
+    console.log("id assigned is "+newTodo.id);
     return copyTodos.concat(newTodo);
   },
 
@@ -56,7 +51,26 @@ var todoFunctions = {
     return newTodos;
   },
 
-  sortTodos: function(todos, sortFunction) {
+  starTodo: function(todos, idToStar) {
+    var newTodos = this.cloneArrayOfObjects(todos);
+    var targetObj = newTodos.find(function(x) {
+      return x.id == idToStar;
+    });
+    targetObj.priority = !targetObj.priority;
+    return newTodos;
+  },
+
+  sortTodos: function(todos, sortUp) {
+    var newTodos= this.cloneArrayOfObjects(todos);
+    newTodos.sort(function(a,b){
+      if(sortUp){
+          return parseInt(b.id)-parseInt(a.id)});
+      }
+      else{
+        return parseInt(a.id)-parseInt(b.id)});
+      }
+return newTodos;
+    })
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
