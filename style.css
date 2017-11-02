@@ -71,6 +71,9 @@ h1 {
 .checkbox {
   -webkit-appearance: none;
 }
+.checkbox:focus {
+    outline: 0;
+}
 
 
 .description {

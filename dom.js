@@ -12,6 +12,7 @@
   var sortUpButton= document.getElementById('sortFirst');
   var sortDownButton= document.getElementById('sortLast');
   var prioritySortButton = document.getElementById('sortPriority');
+  var priorityStar = document.getElementById("priority");
 
   //Pulls in current state from local storage
   if (localState) {
@@ -25,12 +26,6 @@
       { id: -2, description: 'second todo' },
       { id: -1, description: 'third todo' },
     ]; // this is our initial todoList
-  }
-  
-var priorityStar = document.getElementById("priority");
-  priorityStar.addEventListener('click', fillStar, false);
-  function fillStar(e){
-    e.target.className = "fa fa-star star-on checkbox";
   }
   
   // This function takes a todo, it returns the DOM node representing that todo
@@ -89,6 +84,17 @@ var priorityStar = document.getElementById("priority");
     return todoNode;
   };
 
+  if (priorityStar) {
+    priorityStar.addEventListener('click', fillStar, false);
+    function fillStar(e){
+      if (addTodoForm.priority.checked == true) {
+        e.target.className = "fa fa-star star-on checkbox";
+      } else {
+        e.target.className = "fa fa-star-o star-on checkbox";
+      }
+    }
+  }
+
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
@@ -99,6 +105,7 @@ var priorityStar = document.getElementById("priority");
       todoObj.done = false;
       todoObj.priority = event.target.priority.checked;
       event.target.priority.checked = false;
+      priorityStar.className = "fa fa-star-o star-off checkbox";
       var newState = todoFunctions.addTodo(state, todoObj);
       update(newState);
     });
