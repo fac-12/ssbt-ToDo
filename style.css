@@ -32,6 +32,7 @@ h1 {
 
 .todo-container {
   background-color: white;
+  border: 1px solid blue;
   padding: 5px;
   width: 90%;
 }
@@ -40,7 +41,7 @@ h1 {
   font-size: 3rem;
   background-color: white;
   margin: 5px;
-  height: 30%;
+  /*height: 4rem;*/
   padding: 9%;
   border-bottom: 1px solid grey;
 }
