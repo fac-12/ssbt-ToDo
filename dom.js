@@ -19,7 +19,10 @@
 
     // add span holding description
     var s = document.createElement("span");
-    s.className = "description";
+    s.className = "description ";
+    if (todo.priority === true) {
+      s.className += "priority ";
+    }
     var d = document.createTextNode(todo.description);     // Create a text node for description
     s.appendChild(d);
     todoNode.appendChild(s);                                     // Append the text to <span>
@@ -60,6 +63,8 @@
       todoObj.description = event.target.description.value;
       event.target.description.value = "";
       todoObj.done = false;
+      todoObj.priority = event.target.priority.checked;
+      event.target.priority.checked = false;
       var newState = todoFunctions.addTodo(state, todoObj);
       update(newState);
     });
