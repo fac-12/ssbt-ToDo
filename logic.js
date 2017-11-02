@@ -13,7 +13,7 @@ var todoFunctions = {
         idCounter = val;
       },
       incrementCounter: function() {
-        return idCounter++;
+        return idCounter + 1;
       }
     };
   })(),
