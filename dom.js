@@ -26,6 +26,19 @@
     var todoNode = document.createElement('li');
     // you will need to use addEventListener
 
+    // add markTodo button
+    var markTodoNode = document.createElement('button');
+    if (todo.done) {
+      markTodoNode.className = "fa fa-check-square-o mark";
+    } else {
+      markTodoNode.className = "fa fa-square-o mark";
+    }
+    markTodoNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    });
+    todoNode.appendChild(markTodoNode);
+
     // add span holding description
     var s = document.createElement("span");
     s.className = "description ";
@@ -36,24 +49,27 @@
     s.appendChild(d);
     todoNode.appendChild(s);                                     // Append the text to <span>
 
+    // this adds a priority button
+    var priorityButtonNode = document.createElement('button');
+    if(todo.priority){
+      priorityButtonNode.className = "fa fa-star star-on";
+    } else {
+       priorityButtonNode.className = "fa fa-star-o star-off";
+    }
+    priorityButtonNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.starTodo(state, todo.id);
+      update(newState);
+    });
+    todoNode.appendChild(priorityButtonNode);
+    
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
-    deleteButtonNode.classname = "delete ";
+    deleteButtonNode.className = "fa fa-times delete";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
-
-    // add markTodo button
-    var markTodoNode = document.createElement('button');
-    markTodoNode.classname = "mark ";
-    markTodoNode.addEventListener('click', function(event) {
-      var newState = todoFunctions.markTodo(state, todo.id);
-      update(newState);
-    });
-
-    todoNode.appendChild(markTodoNode);
 
 
     // add classes for css
