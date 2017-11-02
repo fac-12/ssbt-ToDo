@@ -33,7 +33,6 @@ h1 {
   align-items: center;
 }
 
-
 .todo-container {
   background-color: white;
   padding: 5px;
@@ -149,7 +148,7 @@ h1 {
   font-size: 2rem;
   /* font-family: 'Roboto Slab', sans-serif; */
   padding:10px;
-  margin: 5px 5px;
+  margin: 10px 10px 0px 0px;
   /* background-color: white;
   border: 1px solid black; */
   

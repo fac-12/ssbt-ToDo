@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang=en>
-  <head>
-    <meta charset="utf-8">
-    <title>tdd todo</title>
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <h1 aria label="my to do list">TODAY</h1>
-    </header>
-    <main class = "main-flex-container">
-<form id="add-todo" class="add-todo">
-  <label for="description"></label>
-  <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield" aria-label="add item to list">
-  <label for="priority"></label>
-  <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" aria-label="mark item off list">
-  <input type="submit" id="submit" name="submit" value="" class="submiticon" aria-label="submit new item to list">
-</form>
+
+<head>
+  <meta charset="utf-8">
+  <title>tdd todo</title>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Slab" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1 aria label="my to do list">TODAY</h1>
+  </header>
+  <main class="main-flex-container">
+    <form id="add-todo" class="add-todo">
+      <label for="description"></label>
+      <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield" aria-label="add item to list">
+      <label for="priority"></label>
+      <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" aria-label="mark item off list">
+      <input type="submit" id="submit" name="submit" value="" class="submiticon" aria-label="submit new item to list">
+    </form>
 
     <div class="sort-buttons">
-   <!--  <button id="reset">Reset</button> -->
-   <!-- <span class="sort-by-date">Sort By Date</span> -->
-     <button id="sortFirst" class="fa fa-arrow-circle-down sortbutton" aria-label="Sort by date descending">   date descending</button>
-     <button id="sortLast" class="fa fa-arrow-circle-up sortbutton" aria-label="Sort by date ascending">   date ascending</button>
-     <!-- <span class="sort-by-date">Sort By Starred</span> -->
-     <button id="sortPriority" class="fa fa-star-half-o sortbutton" aria-label="Sort by priority">   starred</button>
-   </div>
-    <div id = "todo-container" class="todo-container">
-        <ul>
-        </ul>
+      <!--  <button id="reset">Reset</button> -->
+      <span class="sort-by-date">Sort by:</span>
+      <button id="sortFirst" class="fa fa-arrow-circle-up sortbutton" aria-label="Sort by date ascending">   Sort by Oldest</button>
+      <button id="sortLast" class="fa fa-arrow-circle-down sortbutton" aria-label="Sort by date descending">   Sort by Newest</button>
+      <!-- <span class="sort-by-date">Sort By Starred</span> -->
+      <button id="sortPriority" class="fa fa-star-half-o sortbutton" aria-label="Sort by priority">  Sort by Starred</button>
+    </div>
+    <div id="todo-container" class="todo-container">
+      <ul>
+      </ul>
     </div>
 
-    </main>
-  </body>
-  <script type="text/javascript" src = "./logic.js"></script>
-  <script type="text/javascript" src = "./dom.js"></script>
+  </main>
+</body>
+<script type="text/javascript" src="./logic.js"></script>
+<script type="text/javascript" src="./dom.js"></script>
+
 </html>

@@ -114,7 +114,7 @@ var priorityStar = document.getElementById("priority");
   if(sortUpButton){
     sortUpButton.addEventListener('click',function(event){
       var sortFunction = function(a,b) {
-        return parseInt(b.id)-parseInt(a.id);
+        return parseInt(a.id)-parseInt(b.id);
       }
       var newState=  todoFunctions.sortTodos(state, sortFunction);
       update(newState);
@@ -124,7 +124,7 @@ var priorityStar = document.getElementById("priority");
   if(sortDownButton){
       sortDownButton.addEventListener('click',function(event){
         var sortFunction = function(a,b) {
-          return parseInt(a.id)-parseInt(b.id);
+          return parseInt(b.id)-parseInt(a.id);
         }
         var newState=  todoFunctions.sortTodos(state, sortFunction);
         update(newState);
