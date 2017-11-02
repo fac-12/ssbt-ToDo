@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>tdd todo</title>
     <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   </head>
@@ -12,11 +13,6 @@
       <h1>TODAY</h1>
     </header>
     <main class = "main-flex-container">
-
-    <div id = "todo-container" class="todo-container">
-        <ul>
-        </ul>
-    </div>
     <form id="add-todo">
       <label for="description">New Task:</label>
       <input type="text" id="description" name="description" value="">
@@ -24,6 +20,10 @@
       <input type="checkbox" id="priority" name="priority">
       <input type="submit" name="" value="Submit">
     </form>
+    <div id = "todo-container" class="todo-container">
+        <ul>
+        </ul>
+    </div>
     <!-- <div id="sort-buttons">
       <button id="reset">Reset</button>
       <button id="sortChrono">Sort by Date Added</button>

@@ -1,5 +1,6 @@
 * {
   font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -7,12 +8,15 @@ body {
   margin: 0px;
 }
 
+button:focus {
+    outline:0;
+}
+
 header {
   background-image: url('images/jeshoots-com-219386.jpg');
   background-position: center;
   background-size: cover;
-  height: 15rem;
-
+  height: 12rem;
 }
 
 h1 {
@@ -32,66 +36,98 @@ h1 {
 
 .todo-container {
   background-color: white;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   padding: 5px;
-  width: 90%;
+  width: 70%;
+  max-width: 700px;
 }
 
 .todo-container li {
-  font-size: 3rem;
+  font-size: 2rem;
   background-color: white;
-  margin: 5px;
-  /*height: 4rem;*/
-  padding: 9%;
-  border-bottom: 1px solid grey;
+  margin: 15px 0;
+  display: flex;
+  /* border: 1px solid red; */
+  padding: 1rem;
+  box-shadow: 0px 0px 10px 2px #aaa;
 }
 
 .todo-container ul {
   list-style: none;
   padding: 0 5px;
   height:70%;
+  /* border: 1px solid purple; */
 }
 
 .description {
-
+    margin-right: auto;
+    margin-left: 20px;
 }
 
 .priority {
-    font-weight: bold;
+
 }
 
 .delete {
     margin-left: 5px;
     border: 0;
     background: none;
-    font-size: 30px !important;
+    font-size: 2rem !important;
 }
-.delete:hover{
+.delete:hover {
     color: red;
 }
 
 .star-off, .star-on {
     margin-left: 10px;
+    margin-top: 2px;
     border: 0;
     background: none;
-    font-size: 25px !important;
+    font-size: 1.85rem !important;
 }
 .star-off {
     color: gray;
 }
 .star-off:hover {
-    color: blue;
+    color: rgb(0, 94, 255);
 }
 .star-on {
-    color: blue;
-}
-.star-on:hover {
-    color: gray;
+    color: rgb(0, 94, 255);
 }
 
-.mark {
-    margin-left: 10px;
+
+.mark-on, .mark-off {
     border: 0;
     background: none;
-    font-size: 25px !important;
+    font-size: 1.7rem !important;
+    margin-top: 6px;
+    width: 2rem;
+}
+.mark-off:hover {
+    color: green;
+}
+.mark-on {
+    color: green;
+}
+
+@media (max-width: 500px) {
+    .todo-container {
+        width: 100%;
+    }
+    .todo-container li {
+        font-size: 1.5rem;
+        box-shadow: none;
+        border-top: 1px solid #aaa;
+        margin: 0px;
+        padding: 20px 0;
+    }
+    .mark {
+        font-size:1.1rem;
+    }
+    .delete{
+
+    }
+    .priority{
+
+    }
 }

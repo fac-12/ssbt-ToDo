@@ -13,7 +13,8 @@ var todoFunctions = {
         idCounter = val;
       },
       incrementCounter: function() {
-        return idCounter++;
+        idCounter += 1;
+        return idCounter;
       }
     };
   })(),
@@ -29,6 +30,7 @@ var todoFunctions = {
   addTodo: function(todos, newTodo) {
     var copyTodos = this.cloneArrayOfObjects(todos);
     newTodo.id=this.generateId.incrementCounter();
+    console.log("id assigned is "+newTodo.id);
     return copyTodos.concat(newTodo);
   },
 
