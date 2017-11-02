@@ -49,6 +49,15 @@ var todoFunctions = {
     return newTodos;
   },
 
+  starTodo: function(todos, idToStar) {
+    var newTodos = this.cloneArrayOfObjects(todos);
+    var targetObj = newTodos.find(function(x) {
+      return x.id == idToStar;
+    });
+    targetObj.priority = !targetObj.priority;
+    return newTodos;
+  },
+
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)

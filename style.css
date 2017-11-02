@@ -59,3 +59,39 @@ h1 {
 .priority {
     font-weight: bold;
 }
+
+.delete {
+    margin-left: 5px;
+    border: 0;
+    background: none;
+    font-size: 30px !important;
+}
+.delete:hover{
+    color: red;
+}
+
+.star-off, .star-on {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    font-size: 25px !important;
+}
+.star-off {
+    color: gray;
+}
+.star-off:hover {
+    color: blue;
+}
+.star-on {
+    color: blue;
+}
+.star-on:hover {
+    color: gray;
+}
+
+.mark {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    font-size: 25px !important;
+}
