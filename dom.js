@@ -9,9 +9,9 @@
   var sortChronoBtn = document.getElementById('sortChrono');
   var sortPriorityBtn = document.getElementById('sortPriority');
   var localState = localStorage.getItem('state');
-  var sortUpButton= document.getElementById('sortFirst');
-  var sortDownButton= document.getElementById('sortLast');
-  var prioritySortButton = document.getElementById('sortPriority');
+  var sortOldButton= document.getElementById('sortOld');
+  var sortNewButton= document.getElementById('sortNew');
+  var sortStarButton = document.getElementById('sortStar');
 
   //Pulls in current state from local storage
   if (localState) {
@@ -27,7 +27,7 @@
     ]; // this is our initial todoList
   }
   
-var priorityStar = document.getElementById("priority");
+  var priorityStar = document.getElementById("priority");
   priorityStar.addEventListener('click', fillStar, false);
   function fillStar(e){
     e.target.className = "fa fa-star star-on checkbox";
@@ -111,8 +111,9 @@ var priorityStar = document.getElementById("priority");
     });
   };
 
-  if(sortUpButton){
-    sortUpButton.addEventListener('click',function(event){
+  if(sortOldButton){
+    sortOldButton.addEventListener('click',function(event){
+      toggleClass([this],[sortNewButton,sortStarButton],"highlight");
       var sortFunction = function(a,b) {
         return parseInt(a.id)-parseInt(b.id);
       }
@@ -121,8 +122,9 @@ var priorityStar = document.getElementById("priority");
     });
   }
 
-  if(sortDownButton){
-      sortDownButton.addEventListener('click',function(event){
+  if(sortNewButton){
+      sortNewButton.addEventListener('click',function(event){
+        toggleClass([this],[sortOldButton,sortStarButton],"highlight");
         var sortFunction = function(a,b) {
           return parseInt(b.id)-parseInt(a.id);
         }
@@ -131,8 +133,9 @@ var priorityStar = document.getElementById("priority");
       });
   }
 
-  if(prioritySortButton) {
-    prioritySortButton.addEventListener('click', function(event) {
+  if(sortStarButton) {
+    sortStarButton.addEventListener('click', function(event) {
+      toggleClass([this],[sortOldButton,sortNewButton],"highlight");
       var sortFunction = function(a,b) {
         return b.priority-a.priority;
       }
@@ -141,7 +144,15 @@ var priorityStar = document.getElementById("priority");
     });
   }
 
-  
+  //Function to toggle a class
+  var toggleClass = function(onArr, offArr, theClass) {
+    onArr.forEach(function(x) {
+      x.classList.add(theClass);
+    });
+    offArr.forEach(function(x) {
+      x.classList.remove(theClass);
+    });
+  }
 
   // you should not need to change this function
   var update = function(newState) {

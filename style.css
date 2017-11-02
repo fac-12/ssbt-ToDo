@@ -156,8 +156,17 @@ h1 {
     background-color: white;
 }
 
+.sort-buttons .highlight {
+    color: rgba(0, 98, 255, 1);
+    font-weight: bold;
+}
+
 .sort-buttons:hover > button:hover {
-    color: rgb(0, 94, 255);
+    color: rgba(0, 98, 255, 0.6);
+    font-weight: bold;
+}
+.sort-buttons:hover > button.highlight:hover {
+    color: rgba(0, 98, 255, 1);
     font-weight: bold;
 }
 
@@ -173,7 +182,6 @@ h1 {
 .sort-buttons button i {
     font-size: 1.2rem !important;
 }
-
 
 
 
