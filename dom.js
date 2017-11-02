@@ -5,13 +5,22 @@
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
+  var localState = localStorage.getItem('state');
 
-  var state = [
-    { id: -3, description: 'first todo' },
-    { id: -2, description: 'second todo' },
-    { id: -1, description: 'third todo' },
-  ]; // this is our initial todoList
-
+  //Pulls in current state from local storage
+  if (localState) {
+    var state = JSON.parse(localState);
+    todoFunctions.generateId.set(state.reduce(function(a, b) {
+      return a > parseInt(b.id) ? a : parseInt(b.id);
+    }, 0));
+  } else {
+    var state = [
+      { id: -3, description: 'first todo' },
+      { id: -2, description: 'second todo' },
+      { id: -1, description: 'third todo' },
+    ]; // this is our initial todoList  
+  }
+  
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
@@ -55,11 +64,8 @@
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      // what is inside event.target?
-      var todoObj = {};
       event.preventDefault();
+      var todoObj = {};
       todoObj.description = event.target.description.value;
       event.target.description.value = "";
       todoObj.done = false;
@@ -84,9 +90,13 @@
       todoListNode.appendChild(createTodoNode(todo));
     });
 
+    //Stores the state in local memory
+    localStorage.setItem('state', JSON.stringify(state));
+
     // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);
   };
 
   if (container) renderState(state);
+
 })();

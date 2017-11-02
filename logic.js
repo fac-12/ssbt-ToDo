@@ -7,12 +7,15 @@ var todoFunctions = {
   // You do not need to understand the implementation of this function.
   generateId: (function() {
     var idCounter = 0;
-
-    function incrementCounter() {
-      return (idCounter += 1);
-    }
-
-    return incrementCounter;
+    //reset idCounter to current max id if a list already exists
+    return {
+      set: function(val) {
+        idCounter = val;
+      },
+      incrementCounter: function() {
+        return idCounter++;
+      }
+    };
   })(),
 
   //cloneArrayOfObjects will create a copy of the todos array
@@ -25,7 +28,7 @@ var todoFunctions = {
 
   addTodo: function(todos, newTodo) {
     var copyTodos = this.cloneArrayOfObjects(todos);
-    newTodo.id=this.generateId();
+    newTodo.id=this.generateId.incrementCounter();
     return copyTodos.concat(newTodo);
   },
 
