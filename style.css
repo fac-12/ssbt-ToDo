@@ -156,8 +156,9 @@ h1 {
     background-color: white;
 }
 
-.sort-buttons > button:hover {
-    border: 1 solid black;
+.sort-buttons:hover > button:hover {
+    color: rgb(0, 94, 255);
+    font-weight: bold;
 }
 
 .sort-buttons button span {
