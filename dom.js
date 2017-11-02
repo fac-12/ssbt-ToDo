@@ -26,7 +26,13 @@
       { id: -1, description: 'third todo' },
     ]; // this is our initial todoList
   }
-
+  
+var priorityStar = document.getElementById("priority");
+  priorityStar.addEventListener('click', fillStar, false);
+  function fillStar(e){
+    e.target.className = "fa fa-star star-on checkbox";
+  }
+  
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
