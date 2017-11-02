@@ -28,10 +28,14 @@ var todoFunctions = {
   },
 
   addTodo: function(todos, newTodo) {
+    if (newTodo.description.length === 0) {
+    alert("You've not entered a to do item!");
+  } else {
     var copyTodos = this.cloneArrayOfObjects(todos);
     newTodo.id=this.generateId.incrementCounter();
     console.log("id assigned is "+newTodo.id);
     return copyTodos.concat(newTodo);
+  }
   },
 
 
