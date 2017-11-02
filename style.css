@@ -138,6 +138,16 @@ box-shadow: 0px 0px 10px 2px #aaa;
 width:90%;
 }
 
+.sortbutton{
+  font-size: 1rem;
+  font-family: 'Roboto Slab', sans-serif;
+  padding:10px;
+  margin: 5px 5px;
+  background-color: white;
+  border: 1px solid black;
+  
+}
+
 
 
 
