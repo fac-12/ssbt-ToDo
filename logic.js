@@ -33,8 +33,16 @@ var todoFunctions = {
   } else {
     var copyTodos = this.cloneArrayOfObjects(todos);
     newTodo.id=this.generateId.incrementCounter();
-    console.log("id assigned is "+newTodo.id);
-    return copyTodos.concat(newTodo);
+    if (todos.length > 1) {
+      if (parseInt(todos[0].id)>parseInt(todos[1].id)) {
+        copyTodos.unshift(newTodo);
+      } else {
+        copyTodos.push(newTodo);
+      }
+    } else {
+      copyTodos.push(newTodo);
+    }
+    return copyTodos;
   }
   },
 
