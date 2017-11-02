@@ -106,14 +106,14 @@
 
   if(sortUpButton){
     sortUpButton.addEventListener('click',function(event){
-    var newState=  todoFunctions.sortTodos(state, true);
+    var newState=  todoFunctions.sortTodos(state, false);
     update(newState);
     });
   }
 
   if(sortDownButton){
       sortDownButton.addEventListener('click',function(event){
-      var newState=  todoFunctions.sortTodos(state, false);
+      var newState=  todoFunctions.sortTodos(state, true);
       update(newState);
       });
 
