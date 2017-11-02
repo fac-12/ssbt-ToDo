@@ -26,7 +26,12 @@ var todoFunctions = {
   addTodo: function(todos, newTodo) {
     var copyTodos = this.cloneArrayOfObjects(todos);
     newTodo.id=this.generateId();
-    return copyTodos.concat(newTodo);
+    if (newTodo.priority) {
+      copyTodos.unshift(newTodo);
+    } else {
+      copyTodos.push(newTodo);
+    }
+    return copyTodos;
   },
 
 
