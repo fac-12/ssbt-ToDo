@@ -52,6 +52,16 @@ h1 {
   height:70%;
 }
 
+.submiticon {
+  background-image: url('images/plus1600.png');
+  background-repeat: no-repeat;
+  background-color: white;
+  border:none;
+  width: 5rem;
+  height: 5rem;
+  background-size: 3rem;
+}
+
 .description {
 
 }
@@ -100,10 +110,8 @@ h1 {
   font-size: 2rem;
   background-color: white;
   margin: 5px;
-  /*height: 4rem;*/
   padding: 3rem;
   border-bottom: 1px solid grey;
-  /*width: 90%;*/
   width: 75%;
   height: 1%;
 
