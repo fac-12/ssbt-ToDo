@@ -36,7 +36,6 @@ h1 {
 
 .todo-container {
   background-color: white;
-  /* border: 1px solid blue; */
   padding: 5px;
   width: 70%;
   max-width: 700px;
@@ -47,7 +46,6 @@ h1 {
   background-color: white;
   margin: 15px 0;
   display: flex;
-  /* border: 1px solid red; */
   padding: 1rem;
   box-shadow: 0px 0px 10px 2px #aaa;
 }
@@ -56,8 +54,24 @@ h1 {
   list-style: none;
   padding: 0 5px;
   height:70%;
-  /* border: 1px solid purple; */
 }
+
+.submiticon {
+  background-image: url('images/plus1600.png');
+  background-repeat: no-repeat;
+  background-color: white;
+  border: 0;
+  width: 3rem;
+  height: 3rem;
+  padding: 1rem;
+  margin: 10px;
+  background-size: 3rem;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+}
+
 
 .description {
     margin-right: auto;
@@ -74,6 +88,7 @@ h1 {
     background: none;
     font-size: 2rem !important;
 }
+
 .delete:hover {
     color: red;
 }
@@ -99,6 +114,39 @@ h1 {
 .mark-on, .mark-off {
     border: 0;
     background: none;
+    font-size: 25px !important;
+}
+
+.add-todo {
+  width:55%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+  height: 100%;
+}
+
+.inputfield {
+font-size: 1.5rem;
+background-color: white;
+margin: 10px 6px;
+display: flex;
+align-items: center;
+padding: 1rem;
+box-shadow: 0px 0px 10px 2px #aaa;
+width:90%;
+}
+
+
+
+
+/*.plus {
+  font-size: 3rem !important;
+  padding-right: 2rem;
+
+
+}*/
     font-size: 1.7rem !important;
     margin-top: 6px;
     width: 2rem;
@@ -121,6 +169,24 @@ h1 {
         margin: 0px;
         padding: 20px 0;
     }
+    .add-todo {
+      width: 85%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .inputfield {
+    font-size: 1.5rem;
+    background-color: white;
+    margin: 10px 6px;
+    display: flex;
+    align-items: left;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px 2px #aaa;
+    }
+
     .mark {
         font-size:1.1rem;
     }
