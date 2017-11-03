@@ -102,15 +102,17 @@
   if (addTodoForm) {
     addTodoForm.addEventListener('submit', function(event) {
       event.preventDefault();
-      var todoObj = {};
-      todoObj.description = event.target.description.value;
-      event.target.description.value = "";
-      todoObj.done = false;
-      todoObj.priority = event.target.priority.checked;
-      event.target.priority.checked = false;
-      priorityStar.className = "fa fa-star-o star-off checkbox";
-      var newState = todoFunctions.addTodo(state, todoObj);
-      update(newState);
+      if (event.target.description.value.length > 1) {
+        var todoObj = {};
+        todoObj.description = event.target.description.value;
+        event.target.description.value = "";
+        todoObj.done = false;
+        todoObj.priority = event.target.priority.checked;
+        event.target.priority.checked = false;
+        priorityStar.className = "fa fa-star-o star-off checkbox";
+        var newState = todoFunctions.addTodo(state, todoObj);
+        update(newState);
+      }
     });
   };
 

@@ -241,7 +241,6 @@ h1 {
     .mark {
         font-size:1.1rem;
     }
-<<<<<<< HEAD
     .sort-buttons {
         width: 100%;
         padding: 0;
@@ -252,6 +251,4 @@ h1 {
     .sort-buttons > button {
         margin: auto;
     }
-=======
->>>>>>> fixInputStar
 }
