@@ -13,7 +13,6 @@
   //get local storage references
   var localState = localStorage.getItem('state');
 
-  //Pulls in current state (the list array) from local storage
   if (localState) {
     var state = JSON.parse(localState);
 
@@ -29,8 +28,7 @@
       { id: -1, description: 'third todo' },
     ];
   }
-  
-  // This function takes a todo item from the array, it returns the DOM node representing that todo. Triggered every time the array changes at all by the renderState function.
+
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
 
@@ -99,7 +97,7 @@
         var newState = todoFunctions.addTodo(state, todoObj);
         update(newState);
       }
-    });
+  if (priorityStar) {
     priorityStar.addEventListener('click', fillStar, false);
     function fillStar(e){
       if (addTodoForm.priority.checked == true) {
@@ -108,7 +106,7 @@
         e.target.className = "fa fa-star-o star-on checkbox";
       }
     }
-  };
+  }
 
   //Sort Button Listeners
   if(sortOldButton){
