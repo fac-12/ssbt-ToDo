@@ -182,25 +182,12 @@ h1 {
     position: relative;
     top: -2px;
     font-size: 1rem;
-    /* font-family: 'Roboto Slab', sans-serif; */
 }
 
 .sort-buttons button i {
     font-size: 1.2rem !important;
 }
 
-
-
-/*.plus {
-  font-size: 3rem !important;
-  padding-right: 2rem;
-
-
-}*/
-    /* font-size: 1.7rem !important;
-    margin-top: 6px;
-    width: 2rem;
-} */
 .mark-off:hover {
     color: green;
 }

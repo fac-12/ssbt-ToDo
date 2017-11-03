@@ -1,38 +1,38 @@
-// part 2 linking it all together
 // The function here is called an iife,
 // it keeps everything inside hidden from the rest of our application
 (function() {
-  // This is the dom node where we will keep our todo
-  //get dom node references
+
+  // Get all necessary dom node references
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
   var sortOldButton= document.getElementById('sortOld');
   var sortNewButton= document.getElementById('sortNew');
   var sortStarButton = document.getElementById('sortStar');
-  //get local storage references
-  var localState = localStorage.getItem('state');
   var priorityStar = document.getElementById("priority");
 
-  //Pulls in current state from local storage
+  //get local storage references
+  var localState = localStorage.getItem('state');
+
   if (localState) {
     var state = JSON.parse(localState);
+
+    //set the base id to the current max id in list
     todoFunctions.generateId.set(state.reduce(function(a, b) {
       return a > parseInt(b.id) ? a : parseInt(b.id);
     }, 0));
   } else {
+    //initial to do list if no stored state
     var state = [
       { id: -3, description: 'first todo' },
       { id: -2, description: 'second todo' },
       { id: -1, description: 'third todo' },
-    ]; // this is our initial todoList
+    ];
   }
-  
-  // This function takes a todo, it returns the DOM node representing that todo
+
   var createTodoNode = function(todo) {
     var todoNode = document.createElement('li');
-    // you will need to use addEventListener
 
-    // add markTodo button
+    // create and append button to toggle whether item done
     var markTodoNode = document.createElement('button');
     if (todo.done) {
       markTodoNode.className = "fa fa-check-square-o mark-on";
@@ -45,32 +45,29 @@
     });
     todoNode.appendChild(markTodoNode);
 
-    // add span holding description
-    var s = document.createElement("span");
-    s.className = "description ";
-    s.addEventListener('click', function(event) {
+    // create and append span to hold description (clicking also toggles done property)
+    var itemSpan = document.createElement("span");
+    itemSpan.className = "description ";
+    itemSpan.addEventListener('click', function(event) {
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     })
-    if (todo.priority === true) {
-      s.className += "priority ";
-    }
-    var d = document.createTextNode(todo.description);     // Create a text node for description
-    s.appendChild(d);
-    todoNode.appendChild(s);                                     // Append the text to <span>
+    var itemDesc = document.createTextNode(todo.description);     
+    itemSpan.appendChild(itemDesc);
+    todoNode.appendChild(itemSpan);
 
-    // this adds a priority button
-    var priorityButtonNode = document.createElement('button');
+    // this adds a star button that toggles the priority property
+    var starButtonNode = document.createElement('button');
     if(todo.priority){
-      priorityButtonNode.className = "fa fa-star star-on";
+      starButtonNode.className = "fa fa-star star-on";
     } else {
-       priorityButtonNode.className = "fa fa-star-o star-off";
+      starButtonNode.className = "fa fa-star-o star-off";
     }
-    priorityButtonNode.addEventListener('click', function(event) {
+    starButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.starTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(priorityButtonNode);
+    todoNode.appendChild(starButtonNode);
 
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
@@ -81,12 +78,25 @@
     });
     todoNode.appendChild(deleteButtonNode);
 
-
-    // add classes for css
-
     return todoNode;
   };
 
+  // Event Listeners for form to add new To Dos
+  if (addTodoForm) {
+    addTodoForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      //only take action if at least one character entered.
+      if (event.target.description.value.length > 1) {
+        var todoObj = {};
+        todoObj.description = event.target.description.value;
+        event.target.description.value = "";
+        todoObj.done = false;
+        todoObj.priority = event.target.priority.checked;
+        event.target.priority.checked = false;
+        priorityStar.className = "fa fa-star-o star-off checkbox";
+        var newState = todoFunctions.addTodo(state, todoObj);
+        update(newState);
+      }
   if (priorityStar) {
     priorityStar.addEventListener('click', fillStar, false);
     function fillStar(e){
@@ -97,22 +107,6 @@
       }
     }
   }
-
-  // bind create todo form
-  if (addTodoForm) {
-    addTodoForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      var todoObj = {};
-      todoObj.description = event.target.description.value;
-      event.target.description.value = "";
-      todoObj.done = false;
-      todoObj.priority = event.target.priority.checked;
-      event.target.priority.checked = false;
-      priorityStar.className = "fa fa-star-o star-off checkbox";
-      var newState = todoFunctions.addTodo(state, todoObj);
-      update(newState);
-    });
-  };
 
   //Sort Button Listeners
   if(sortOldButton){
