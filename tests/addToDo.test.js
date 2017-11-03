@@ -1,6 +1,26 @@
 var test = require('tape');
 var logic = require('../logic');
 
+var testObj = [
+  {
+    id: -1,
+    description: "smashed",
+    done: true,
+},
+
+ {
+   id: 0,
+   description: "coffee",
+   done: false,
+ },
+];
+
+var newTestObj =
+  {
+    description: "new2",
+    done: true,
+  };
+
 test('tape is working', function(t) {
   const actual = 1;
   const expected = 1;
@@ -42,23 +62,3 @@ test('check add to do', function(t) {
   t.deepEqual(actual, expected, "new obj added to the array");
   t.end();
 });
-
-var testArr = [
-  {
-    id: -1,
-    description: "smashed",
-    done: true,
-},
-
- {
-   id: 0,
-   description: "coffee",
-   done: false,
- },
-];
-
-var newTestObj =
-  {
-    description: "new2",
-    done: true,
-  };
