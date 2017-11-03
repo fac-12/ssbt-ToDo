@@ -21,6 +21,7 @@ header {
   background-position: center;
   background-size: cover;
   height: 20vh;
+  border-bottom: 3px solid #aaa;
 }
 
 h1 {
@@ -35,11 +36,11 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
 }
 
 .todo-container {
   background-color: white;
-  padding: 5px;
   width: 70%;
   max-width: 700px;
 }
@@ -55,7 +56,8 @@ h1 {
 
 .todo-container ul {
   list-style: none;
-  padding: 0 5px;
+  padding: 0;
+  margin: 0;
   height:70%;
 }
 
