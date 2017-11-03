@@ -102,7 +102,7 @@
       if (addTodoForm.priority.checked == true) {
         e.target.className = "fa fa-star star-on checkbox";
       } else {
-        e.target.className = "fa fa-star-o star-on checkbox";        }
+        e.target.className = "fa fa-star-o star-on checkbox";
       }
     });
   };
