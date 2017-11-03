@@ -41,7 +41,7 @@ test('tape is working', function(t) {
 // });
 
 test('check add to do', function(t) {
-  var actual = logic.addTodo(testObj, newTestObj);
+  var actual = logic.addTodo(testArr, newTestObj);
   var expected = [
     {
       id: -1,
