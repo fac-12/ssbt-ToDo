@@ -8,6 +8,10 @@ body {
   margin: 0px;
 }
 
+button {
+    cursor: pointer;
+}
+
 button:focus {
     outline:0;
 }
@@ -65,20 +69,22 @@ h1 {
   padding: 1rem;
   margin: 10px;
   background-size: 3rem;
+  cursor: pointer;
 }
 
 .checkbox {
   -webkit-appearance: none;
+  cursor: pointer;
+}
+.checkbox:focus {
+    outline: 0;
 }
 
 
 .description {
     margin-right: auto;
     margin-left: 20px;
-}
-
-.priority {
-
+    cursor: pointer;
 }
 
 .delete {
