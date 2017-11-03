@@ -34,6 +34,7 @@
 
     // create and append button to toggle whether item done
     var markTodoNode = document.createElement('button');
+    markTodoNode.setAttribute('aria-label', 'Mark Todo done button');
     if (todo.done) {
       markTodoNode.className = "fa fa-check-square-o mark-on";
     } else {
@@ -52,12 +53,13 @@
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     })
-    var itemDesc = document.createTextNode(todo.description);     
+    var itemDesc = document.createTextNode(todo.description);
     itemSpan.appendChild(itemDesc);
     todoNode.appendChild(itemSpan);
 
     // this adds a star button that toggles the priority property
     var starButtonNode = document.createElement('button');
+    starButtonNode.setAttribute('aria-label', 'Priority flag button');
     if(todo.priority){
       starButtonNode.className = "fa fa-star star-on";
     } else {
@@ -71,6 +73,7 @@
 
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
+    deleteButtonNode.setAttribute('aria-label', 'Delete Button');
     deleteButtonNode.className = "fa fa-times delete";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
