@@ -46,7 +46,7 @@ var todoFunctions = {
     return copyTodos;
   },
 
-  //Take current array and remove object with specified id
+  //Take array and remove object with specified id
   deleteTodo: function(todos, idToDelete) {
    var newTodos = todos.filter(function(todo){
         return todo.id !== idToDelete;
@@ -54,7 +54,7 @@ var todoFunctions = {
     return newTodos;
   },
 
-  //Take current array and toggle done property of object with specificed id
+  //Take array and toggle done property of object with specificed id
   markTodo: function(todos, idToMark) {
     var newTodos = this.cloneArrayOfObjects(todos);
     var targetObj = newTodos.find(function(x) {
@@ -64,7 +64,7 @@ var todoFunctions = {
     return newTodos;
   },
 
-  //Take current array and toggle done property of object with specificed id
+  //Take array and toggle done property of object with specificed id
   starTodo: function(todos, idToStar) {
     var newTodos = this.cloneArrayOfObjects(todos);
     var targetObj = newTodos.find(function(x) {
@@ -74,6 +74,7 @@ var todoFunctions = {
     return newTodos;
   },
 
+  //Take array and sort according to the specified function
   sortTodos: function(todos, sortFunction) {
     var newTodos= this.cloneArrayOfObjects(todos);
     newTodos.sort(sortFunction);
@@ -81,11 +82,7 @@ var todoFunctions = {
   },
 };
 
-
-// Why is this if statement necessary?
-// The answer has something to do with needing to run code both in the browser and in Node.js
-// See this article for more details:
-// http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
+// Allow code to run in browser and node
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
 }
