@@ -15,14 +15,15 @@
     <h1 aria label="my to do list">TODAY</h1>
   </header>
   <main class="main-flex-container">
-    <form id="add-todo" class="add-todo">
-      <label for="description"></label>
-      <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield" aria-label="add item to list" required>
-      <label for="priority"></label>
-      <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" aria-label="mark item off list">
-      <input type="submit" id="submit" name="submit" value="" class="submiticon" aria-label="submit new item to list">
-    </form>
-
+    <div>
+      <form id="add-todo" class="add-todo">
+        <label for="description"></label>
+        <input type="text" id="description" name="description" value="" placeholder="Add to list" class="inputfield" aria-label="add item to list" required>
+        <label for="priority"></label>
+        <input type="checkbox" id="priority" name="priority" class="checkbox fa fa-star-o star-off" aria-label="mark item off list">
+        <input type="submit" id="submit" name="submit" value="" class="submiticon" aria-label="submit new item to list">
+      </form>
+    </div>
     <div class="sort-buttons">
       <!--  <button id="reset">Reset</button> -->
       <span>Sort by:</span>
