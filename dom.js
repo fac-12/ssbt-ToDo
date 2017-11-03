@@ -97,35 +97,34 @@
         var newState = todoFunctions.addTodo(state, todoObj);
         update(newState);
       }
-  if (priorityStar) {
-    priorityStar.addEventListener('click', fillStar, false);
-    function fillStar(e){
+    });
+    priorityStar.addEventListener('click', function(e) {
       if (addTodoForm.priority.checked == true) {
         e.target.className = "fa fa-star star-on checkbox";
       } else {
-        e.target.className = "fa fa-star-o star-on checkbox";
+        e.target.className = "fa fa-star-o star-on checkbox";        }
       }
-    }
-  }
+    });
+  };
 
   //Sort Button Listeners
   if(sortOldButton){
     sortOldButton.addEventListener('click',function(event){
       activateSort(this,[sortNewButton,sortStarButton]);
     });
-  }
+  };
 
   if(sortNewButton){
       sortNewButton.addEventListener('click',function(event){
         activateSort(this,[sortOldButton,sortStarButton]);
       });
-  }
+  };
 
   if(sortStarButton) {
     sortStarButton.addEventListener('click', function(event) {
       activateSort(this,[sortOldButton,sortNewButton]);
     });
-  }
+  };
 
   //Function to activate Sort
   var activateSort = function(turnOn, offArr) {
