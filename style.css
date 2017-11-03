@@ -33,7 +33,6 @@ h1 {
   align-items: center;
 }
 
-
 .todo-container {
   background-color: white;
   padding: 5px;
@@ -145,16 +144,44 @@ h1 {
     padding-left: 10px;
 }
 
-.sortbutton {
-  font-size: 2rem;
-  /* font-family: 'Roboto Slab', sans-serif; */
-  padding:10px;
-  margin: 5px 5px;
-  /* background-color: white;
-  border: 1px solid black; */
-  
+.sort-buttons > span {
+    font-size: 1rem;
+    padding: .6rem .5rem 0 0;
+    margin: 0;
 }
 
+.sort-buttons > button {
+    padding:  10px 8px 10px 8px;
+    border: 0;
+    background-color: white;
+}
+
+.sort-buttons .highlight {
+    color: rgba(0, 98, 255, 1);
+    font-weight: bold;
+}
+
+.sort-buttons:hover > button:hover {
+    color: rgba(0, 98, 255, 0.6);
+    font-weight: bold;
+}
+.sort-buttons:hover > button.highlight:hover {
+    color: rgba(0, 98, 255, 1);
+    font-weight: bold;
+}
+
+.sort-buttons button span {
+    padding: 0px 0px 0px 8px;
+    border: 0px solid blue;
+    position: relative;
+    top: -2px;
+    font-size: 1rem;
+    /* font-family: 'Roboto Slab', sans-serif; */
+}
+
+.sort-buttons button i {
+    font-size: 1.2rem !important;
+}
 
 
 
@@ -202,16 +229,20 @@ h1 {
       display: flex;
       align-items: left;
       padding: 1rem;
-      box-shadow: 0px 0px 10px 2px #aaa;
+      box-shadow: 0px 0px 0px 0px #aaa;
     }
 
     .mark {
         font-size:1.1rem;
     }
-    .delete{
-
+    .sort-buttons {
+        width: 100%;
+        padding: 0;
     }
-    .priority{
-
+    .sort-buttons > span {
+        display: none;
+    }
+    .sort-buttons > button {
+        margin: auto;
     }
 }
