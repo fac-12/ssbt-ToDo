@@ -23,9 +23,9 @@
   } else {
     //initial to do list if no stored state
     var state = [
-      { id: -3, description: 'first todo' },
-      { id: -2, description: 'second todo' },
-      { id: -1, description: 'third todo' },
+      { id: -3, description: 'first todo', done: false, priority: false},
+      { id: -2, description: 'second todo', done: false, priority: false },
+      { id: -1, description: 'third todo', done: false, priority: false },
     ];
   }
 
