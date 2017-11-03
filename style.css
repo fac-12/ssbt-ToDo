@@ -41,7 +41,7 @@ h1 {
 
 .todo-container {
   background-color: white;
-  width: 70%;
+  width: 70vw;
   max-width: 700px;
 }
 
@@ -58,7 +58,6 @@ h1 {
   list-style: none;
   padding: 0;
   margin: 0;
-  height:70%;
 }
 
 .submiticon {
@@ -125,13 +124,12 @@ h1 {
 }
 
 .add-todo {
-  width:70%;
+  width:70vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   max-width: 700px;
-  height: 100%;
 }
 
 .inputfield {
@@ -147,7 +145,7 @@ h1 {
 }
 
 .sort-buttons {
-    width: 70%;
+    width: 70vw;
     max-width: 700px;
     display: flex;
     padding-left: 10px;
@@ -207,6 +205,9 @@ h1 {
         margin: 0;
         padding: 10px;
     }
+    .main-flex-container {
+        margin-top: 10px;
+    }
     .todo-container {
         width: 100%;
     }
@@ -218,12 +219,11 @@ h1 {
         padding: 20px 0;
     }
     .add-todo {
-      width: 100%;
+      width: 100vw;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      height: 100%;
       margin-top: 10px;
     }
     .inputfield {
@@ -240,7 +240,7 @@ h1 {
         font-size:1.1rem;
     }
     .sort-buttons {
-        width: 100%;
+        width: 100vw;
         padding: 0;
     }
     .sort-buttons > span {
