@@ -4,46 +4,24 @@ var todoFunctions = {
   
   // generate a unique id for each to do item
   generateId: (function() {
-
-    //initially set to 0
     var idCounter = 0;
-    
-    return {
-      //method to allow idCounter to be set to different number than 0 (due to previously stored list)
-      set: function(val) {
-        idCounter = val;
-      },
-      //method to increment idCounter
-      incrementCounter: function() {
-        idCounter += 1;
-        return idCounter;
-      }
-    };
+
+    function incrementCounter() {
+      return (idCounter += 1);
+    }
+
+    return incrementCounter;
   })(),
 
   //cloneArrayOfObjects will create a copy of the todos array
   cloneArrayOfObjects: function(todos) {
-    return todos.map(function(todo){
-      return JSON.parse(JSON.stringify(todo));
-    });
+    return [].concat(todos);
   },
 
   //Take current array, new object, add object to array
   addTodo: function(todos, newTodo) {
-    var copyTodos = this.cloneArrayOfObjects(todos);
-    newTodo.id=this.generateId.incrementCounter();
-
-    //if array is longer than 1, determine is date ascending or descending, then push or unshift new object onto array accordingly.
-    if (todos.length > 1) {
-      if (parseInt(todos[0].id)>parseInt(todos[1].id)) {
-        copyTodos.unshift(newTodo);
-      } else {
-        copyTodos.push(newTodo);
-      }
-    } else {
-      copyTodos.push(newTodo);
-    }
-    return copyTodos;
+    newTodo.id=this.generateId();
+    return todos.concat(newTodo);
   },
 
   //Take array and remove object with specified id
@@ -71,13 +49,6 @@ var todoFunctions = {
       return x.id == idToStar;
     });
     targetObj.priority = !targetObj.priority;
-    return newTodos;
-  },
-
-  //Take array and sort according to the specified function
-  sortTodos: function(todos, sortFunction) {
-    var newTodos= this.cloneArrayOfObjects(todos);
-    newTodos.sort(sortFunction);
     return newTodos;
   },
 };
